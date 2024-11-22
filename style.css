@@ -1,0 +1,210 @@
+body {
+	background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4);
+	font-family: 'Roboto', sans-serif;
+	color: #333333;
+	margin: 0;
+	padding: 0;
+	background-size: 400% 400%;
+	animation: gradientBackground 10s ease infinite;
+}
+
+/* Анимация фона */
+@keyframes gradientBackground {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/* Заголовок "Admin Panel" */
+h3 {
+	font-size: 3rem;
+	text-align: center;
+	margin: 30px 0;
+	color: #ffffff;
+	text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+	animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0; transform: translateY(-30px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Карточки */
+.card {
+	background: linear-gradient(145deg, #ffffff, #e4e4e4);
+	border-radius: 20px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	margin-bottom: 20px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	color: #333333;
+	position: relative;
+}
+
+.card::before {
+	content: '';
+	position: absolute;
+	top: -5%;
+	left: -5%;
+	width: 110%;
+	height: 110%;
+	background: linear-gradient(to right, rgba(255, 123, 123, 0.3), rgba(123, 104, 238, 0.3));
+	z-index: -1;
+	filter: blur(20px);
+	border-radius: 20px;
+}
+
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Заголовки карточек */
+.card-title {
+	font-size: 2rem;
+	color: #333333;
+	margin-bottom: 15px;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* Кнопки */
+.btn-info {
+	background: linear-gradient(90deg, #ff7eb3, #ff758c);
+	border: none;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 12px 25px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-warning {
+	background: linear-gradient(90deg, #7f7fd5, #86a8e7, #91eae4);
+	border: none;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 12px 25px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-info:hover {
+	background: linear-gradient(90deg, #ff758c, #ff7eb3);
+	box-shadow: 0px 5px 20px rgba(255, 117, 140, 0.5);
+	transform: scale(1.1);
+}
+
+.btn-warning:hover {
+	background: linear-gradient(90deg, #91eae4, #86a8e7, #7f7fd5);
+	box-shadow: 0px 5px 20px rgba(145, 234, 228, 0.5);
+	transform: scale(1.1);
+}
+
+/* Верхний бар */
+header {
+	background: linear-gradient(90deg, #ff758c, #ff7eb3);
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	color: #ffffff;
+}
+
+header .user-info {
+	color: #ffffff;
+	font-size: 1rem;
+}
+
+header a {
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+header a:hover {
+	text-decoration: underline;
+	color: #ffd1dc;
+}
+
+/* Навигация */
+.navbar {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.navbar button {
+	background: linear-gradient(90deg, #ffffff, #f8f8f8);
+	color: #333333;
+	font-weight: bold;
+	border: 2px solid rgba(255, 117, 140, 0.5);
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+	border: 1px solid #ddd;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease-in-out;
+}
+
+form:hover {
+	box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.form-label {
+	color: #555;
+	font-size: 1rem;
+}
+
+input.form-control {
+	border: 1px solid #ccc;
+	transition: border-color 0.3s ease-in-out;
+}
+
+input.form-control:focus {
+	border-color: #007bff;
+	box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+
+.navbar button:hover {
+	background: linear-gradient(90deg, #ffd1dc, #ff758c);
+	color: #ffffff;
+	transform: scale(1.05);
+	box-shadow: 0px 4px 20px rgba(255, 117, 140, 0.4);
+}
+.video-container {
+	border-radius: 15px; /* Закругление углов */
+	overflow: hidden; /* Скрываем всё, что выходит за границы */
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Добавляем мягкую тень */
+	margin: 20px auto; /* Центрируем видео */
+	width: 90%; /* Ширина для адаптивности */
+	max-width: 1200px; /* Максимальная ширина */
+}
+/* Адаптивность */
+@media (max-width: 768px) {
+	h3 {
+		font-size: 2.2rem;
+	}
+
+	.card {
+		padding: 15px;
+	}
+
+	.navbar {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
