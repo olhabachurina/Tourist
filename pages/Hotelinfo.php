@@ -139,8 +139,10 @@
 </head>
 <body>
 <?php
-session_start();
-include_once("functions.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once 'functions.php';
 
 if (isset($_GET['hotel'])) {
     $hotel = intval($_GET['hotel']);

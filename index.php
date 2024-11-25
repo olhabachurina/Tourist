@@ -1,7 +1,68 @@
 <?php
-session_start();
-include_once("pages/functions.php");
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
+require_once 'pages/functions.php';
+
+// AJAX-обработка для запросов getCities и getHotels
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    header('Content-Type: application/json');
+
+    $action = $_POST['action'];
+    $mysqli = connect();
+
+    if ($action === 'getCities') {
+        $countryId = intval($_POST['country_id']);
+        if ($countryId > 0) {
+            $query = "SELECT id, city FROM cities WHERE countryid = $countryId ORDER BY city";
+            $result = $mysqli->query($query);
+
+            if ($result) {
+                $cities = [];
+                while ($row = $result->fetch_assoc()) {
+                    $cities[] = $row;
+                }
+                echo json_encode($cities);
+            } else {
+                echo json_encode(['error' => 'Failed to load cities.']);
+            }
+        } else {
+            echo json_encode(['error' => 'Invalid country ID.']);
+        }
+        exit;
+    }
+
+    if ($action === 'getHotels') {
+        $cityId = intval($_POST['city_id']);
+        if ($cityId > 0) {
+            $query = "SELECT ho.id, ho.hotel, co.country, ci.city, ho.cost, ho.stars
+                      FROM hotels ho
+                      JOIN cities ci ON ho.cityid = ci.id
+                      JOIN countries co ON ho.countryid = co.id
+                      WHERE ho.cityid = $cityId";
+            $result = $mysqli->query($query);
+
+            if ($result) {
+                $hotels = [];
+                while ($row = $result->fetch_assoc()) {
+                    $hotels[] = $row;
+                }
+                echo json_encode($hotels);
+            } else {
+                echo json_encode(['error' => 'Failed to load hotels.']);
+            }
+        } else {
+            echo json_encode(['error' => 'Invalid city ID.']);
+        }
+        exit;
+    }
+
+    echo json_encode(['error' => 'Invalid action.']);
+    exit;
+}
+
+// Основной код страницы
 $page = isset($_GET['page']) ? intval($_GET['page']) : 0;
 ?>
 <!DOCTYPE html>
